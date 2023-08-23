@@ -176,7 +176,19 @@ public class TestCase extends BaseDriver {
 
 
     }
+@Test
+public void Test5(){
+    //Mesajlarima Giris
+    Func.Wait(1);
+    WebElement MyMessages= driver.findElement(By.xpath("//a[text()='Mesajlarım']"));
+    MyMessages.click();
+
+    //Mesaj Kutusunun bos oldugunun kontrolu
+    WebElement confirmationText = driver.findElement(By.xpath("//div[@class='wbb_v8']"));
+    Assert.assertTrue("Listelenecek mesaj bulunamadı", confirmationText.getText().contains("Listelenecek mesaj bulunamadı"));
+    System.out.println("Mesajlarim = " + confirmationText.getText());
+
 
 }
-
+}
 
