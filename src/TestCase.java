@@ -4,6 +4,7 @@ import Utility.Func;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -190,5 +191,46 @@ public void Test5(){
 
 
 }
+    @Test
+    public void Test6(){
+
+       //Hesap silme
+        Func.Wait(1);
+        WebElement webMenu=driver.findElement(By.xpath("//*[@title='Hesabım']"));
+        webMenu.click();
+
+
+        WebElement btnHesabim=driver.findElement(By.xpath("//*[text()='Hesabım']"));
+        btnHesabim.click();
+
+        Func.Wait(1);
+        WebElement hesapsil=driver.findElement(By.xpath("//*[text()='Hesabımı Sil']"));
+        hesapsil.click();
+
+
+        WebElement password2=driver.findElement(By.xpath("//*[@id='p']"));
+        password2.sendKeys("Can123Can");
+
+
+        WebElement btnHesabimiSil=driver.findElement(By.xpath("//*[@id='u']"));
+        btnHesabimiSil.click();
+
+        try {
+            WebElement passwordError = driver.findElement(By.xpath("//p[text()='Mevcut şifrenizi doğru girdiğinizden emin olun.']"));
+
+            if (!passwordError.isDisplayed()) {
+                System.out.println("Geçersiz Şifre");
+            }
+        }catch (NoSuchElementException e) {
+
+        }
+
+//        Func.Wait(2);
+//        String passwordCheck="JAtW-mZyb4.A-q";
+//        Assert.assertTrue("Geçersiz şifre ! ", password2.getText().contains(passwordCheck));
+
+
+        WaitAndClose();
+    }
 }
 
