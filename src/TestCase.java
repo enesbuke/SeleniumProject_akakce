@@ -85,17 +85,12 @@ public class TestCase extends BaseDriver {
         }
 
         try {
-
-
             // Kullanıcı isminin Can oldugunu kontrol ediyor
             WebElement checkName = driver.findElement(By.cssSelector("[rel='nofollow'][href='/akakcem/']"));
             Assert.assertEquals("Can", checkName.getText());
         } catch (Exception ignored) {
 
         }
-
-
-
     }
 @Test
 
@@ -128,16 +123,5 @@ public class TestCase extends BaseDriver {
     cikis.click();
     Func.Wait(2);
 
-
-
-
-
-
-
-
-
-
-
-
-}
+        }
 }
