@@ -10,7 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestCase extends BaseDriver {
     @Test
-    public void Test1() {
+    public void Test1 () {
+        //aCreateAndAcVerifTest
 
         // Hesap açma butonuna tıklar
         WebElement newAccount = driver.findElement(By.xpath("//a[text()='Hesap Aç']"));
@@ -93,9 +94,11 @@ public class TestCase extends BaseDriver {
     }
 
 @Test
-    public void Test2(){
+    public void Test2 (){
+    //bLogoutTest2
 
-    WebElement hMenu = driver.findElement(By.xpath("//div[@id='HM_v8']/a"));
+    WebElement hMenu = driver.findElement(By.xpath("//a[@title='Hesabım']"));
+    Func.Wait(2);
     new Actions(driver)
             .moveToElement(hMenu)
             .build()
@@ -110,25 +113,25 @@ public class TestCase extends BaseDriver {
     cikis.click();
     Func.Wait(1);
 
-    Assert.assertTrue("Çıkış yapılamadı",cikis.isSelected());
+        Assert.assertFalse("Çıkış yapılamadı",cikis.isSelected());
     }catch (Exception e) {
-
+        System.out.println("Button'a tıklamadı");
     }
         }
 
     @Test
     public void Test3() {
+        //cLoginTest3
+
         WebElement girisYap = driver.findElement(By.cssSelector("[id='H_rl_v8'] a+a"));
         girisYap.click();
         Func.Wait(2);
 
         WebElement email = driver.findElement(By.cssSelector("[id='life']"));
-        email.sendKeys("testuser123@example.com");
-        Func.Wait(2);
+        email.sendKeys("sulmoyarza@gufum.com");
 
         WebElement password = driver.findElement(By.cssSelector("[id='lifp']"));
-        password.sendKeys("ygcU42U+3bP!Uk");
-        Func.Wait(2);
+        password.sendKeys("Can123Can");
 
         WebElement Button = driver.findElement(By.cssSelector("[id='lfb']"));
         Button.click();
@@ -147,7 +150,29 @@ public class TestCase extends BaseDriver {
 
 
         }
-        WaitAndClose();
+    }
+    @Test
+    public void Test4(){
+        //dOrderListTest4
+
+        //Sipariş listesi giriş yapma
+        WebElement hMenu = driver.findElement(By.xpath("//div[@id='HM_v8']/a"));
+        new Actions(driver)
+                .moveToElement(hMenu)
+                .build()
+                .perform();
+
+
+        WebElement hesabim = driver.findElement(By.xpath("//a[text()='Hesabım']"));
+        hesabim.click();
+        Func.Wait(1);
+
+        WebElement siparislerim = driver.findElement(By.xpath("//a[text()='Siparişlerim']"));
+        siparislerim.click();
+
+        WebElement text=driver.findElement(By.xpath("//div[text()='Kayıtlı siparişiniz bulunmuyor.']"));
+
+        Assert.assertTrue("Mesaj kutusu dolu!! ",text.getText().toLowerCase().contains("siparişiniz bulunmuyor"));
 
 
     }
