@@ -1,9 +1,11 @@
 import Utility.BaseDriver;
 
+import Utility.Func;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class TestCase extends BaseDriver {
@@ -95,5 +97,47 @@ public class TestCase extends BaseDriver {
 
 
     }
+@Test
 
+    public void Test2(){
+
+
+      WebElement girisYap=driver.findElement(By.xpath("//div[@id='H_rl_v8']/a[2]"));
+    girisYap.click();
+    Func.Wait(2);
+
+    WebElement email = driver.findElement(By.xpath("//*[@id='life']"));
+    email.sendKeys("testuser123@example.com");
+    Func.Wait(2);
+
+    WebElement password = driver.findElement(By.xpath("//*[@id='lifp']"));
+    password.sendKeys("ygcU42U+3bP!Uk");
+    Func.Wait(2);
+
+    WebElement giris = driver.findElement(By.xpath("//*[@id='lfb']"));
+    giris.click();
+    Func.Wait(2);
+
+    WebElement hMenu = driver.findElement(By.xpath("//div[@id='HM_v8']/a"));
+    new Actions(driver)
+            .moveToElement(hMenu)
+            .build()
+            .perform();
+
+    WebElement cikis=driver.findElement(By.xpath("//a[text()='Çık']"));
+    cikis.click();
+    Func.Wait(2);
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }
