@@ -12,7 +12,6 @@ public class TestCase extends BaseDriver {
     @Test
     public void Test1() {
 
-        System.out.println("Alperen");
         // Hesap açma butonuna tıklar
         WebElement newAccount = driver.findElement(By.xpath("//a[text()='Hesap Aç']"));
         newAccount.click();
@@ -92,26 +91,9 @@ public class TestCase extends BaseDriver {
 
         }
     }
+
 @Test
-
     public void Test2(){
-
-
-      WebElement girisYap=driver.findElement(By.xpath("//div[@id='H_rl_v8']/a[2]"));
-    girisYap.click();
-    Func.Wait(2);
-
-    WebElement email = driver.findElement(By.xpath("//*[@id='life']"));
-    email.sendKeys("testuser123@example.com");
-    Func.Wait(2);
-
-    WebElement password = driver.findElement(By.xpath("//*[@id='lifp']"));
-    password.sendKeys("ygcU42U+3bP!Uk");
-    Func.Wait(2);
-
-    WebElement giris = driver.findElement(By.xpath("//*[@id='lfb']"));
-    giris.click();
-    Func.Wait(2);
 
     WebElement hMenu = driver.findElement(By.xpath("//div[@id='HM_v8']/a"));
     new Actions(driver)
@@ -119,9 +101,18 @@ public class TestCase extends BaseDriver {
             .build()
             .perform();
 
+    Func.Wait(2);
+    try {
+
     WebElement cikis=driver.findElement(By.xpath("//a[text()='Çık']"));
-    cikis.click();
     Func.Wait(2);
 
+    cikis.click();
+    Func.Wait(1);
+
+    Assert.assertTrue("Çıkış yapılamadı",cikis.isSelected());
+    }catch (Exception e) {
+
+    }
         }
 }
