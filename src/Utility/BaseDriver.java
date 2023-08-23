@@ -11,8 +11,8 @@ public class BaseDriver {
     static {
 
         driver=new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.get("https://www.akakce.com");
 
     }
