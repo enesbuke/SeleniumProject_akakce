@@ -115,4 +115,43 @@ public class TestCase extends BaseDriver {
 
     }
         }
+
+    @Test
+    public void Test3() {
+        WebElement girisYap = driver.findElement(By.cssSelector("[id='H_rl_v8'] a+a"));
+        girisYap.click();
+        Func.Wait(2);
+
+        WebElement email = driver.findElement(By.cssSelector("[id='life']"));
+        email.sendKeys("testuser123@example.com");
+        Func.Wait(2);
+
+        WebElement password = driver.findElement(By.cssSelector("[id='lifp']"));
+        password.sendKeys("ygcU42U+3bP!Uk");
+        Func.Wait(2);
+
+        WebElement Button = driver.findElement(By.cssSelector("[id='lfb']"));
+        Button.click();
+        Func.Wait(2);
+
+        try {
+
+            WebElement errorW3 = driver.findElement(By.xpath("//div[@class=\"alertX t2\"]"));
+
+            if (!errorW3.isDisplayed()) {
+                System.out.println("Eposta veya Şifreniz hatalı");
+
+
+            }
+        } catch (Exception e) {
+
+
+        }
+        WaitAndClose();
+
+
+    }
+
 }
+
+
